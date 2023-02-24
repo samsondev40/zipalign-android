@@ -20,10 +20,7 @@ jobs:
   
           # The github tag to download the release from
           tag: download
-          
-          # The release id to download the file from
-          releaseId: 1
-          
+                        
       - name: List files in directory
         run: ls  
           
