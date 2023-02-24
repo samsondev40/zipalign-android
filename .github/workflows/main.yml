@@ -17,10 +17,24 @@ jobs:
         with:
           # The source repository path. Expected format {owner}/{repo}
           repository: ${{ github.repository }}
-  
           # The github tag to download the release from
           tag: download
                         
       - name: List files in directory
         run: ls  
-          
+        
+      - name: Create Tester list
+        run: echo samsonchn40@gmail.com > testers.txt
+        
+      - name: Install Firebase CLI
+        run: curl -sL https://firebase.tools | bash
+      - name: Firebase Login
+        run: |
+          firebase login
+          firebase projects: Oops
+        
+      - name: Firebase distribution
+        run: |
+            firebase appdistribution:distribute 5d7dee48-be3e-4f88-a605-3744d51ee3c8.apk \
+            --app 1:810783978740:android:1be0577201c1625fa09aa1  \
+            --release-notes "Testing automation" --testers-file testers.txt
