@@ -1,0 +1,29 @@
+name: Firebase Distribution
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+        
+      - name: release-downloader
+        uses: robinraju/release-downloader@v1.7
+        with:
+          # The source repository path. Expected format {owner}/{repo}
+          repository: ${{ github.repository }}
+  
+          # The github tag to download the release from
+          tag: download
+          
+          # The release id to download the file from
+          releaseId: 1
+          
+      - name: List files in directory
+        run: ls  
+          
